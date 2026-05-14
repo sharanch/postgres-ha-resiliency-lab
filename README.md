@@ -310,4 +310,4 @@ Passed via `env PGPASSWORD=` on each `kubectl exec` — no `.pgpass` file, no ma
 - Replication check waits 1s before reading replicas. With < 60s between back-to-back runs a freshly rejoined replica may still be catching up — increase sleep if you see intermittent failures.
 - Each `cnpg-write-failover.sh` run drops and recreates `write_failover_test` — results never bleed between runs.
 - Error budget recording rules need ~2 minutes of scrape history before they return values. If `cnpg:error_budget_remaining:percent` returns empty, wait and retry.
-- The `< 3` threshold in `CNPGInstanceDown` assumes exactly 3 active series. After failovers, Prometheus may briefly show stale series from old pod IPs — if the alert fires spuriously while all pods are healthy, wait 5 minutes for stale series to expire.
+- The `< 3` threshold in `CNPGInstanceDown` assumes exactly 3 active series. After failovers, Prometheus may briefly show stale series from old pod IPs — if the alert fires spuriously while all pods are healthy, wait 5 minutes for stale series to expire. 
